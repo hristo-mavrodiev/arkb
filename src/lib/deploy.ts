@@ -153,6 +153,12 @@ export default class Deploy {
           const data = fs.readFileSync(files[0]);
           const cid = await this.ipfs.hash(data);
           console.log(`IPFS: ${clc.cyan(cid)}`);
+          fs.appendFileSync('logfile.txt', `EXISTING FILE: , `);
+          fs.appendFileSync('logfile.txt', `${dir} , `);
+          fs.appendFileSync('logfile.txt', `ipfs://${cid} , `);
+          fs.appendFileSync('logfile.txt', `https://ipfs.io/ipfs/${cid} , `);
+          fs.appendFileSync('logfile.txt', `ar//:${txs[0].id} , `);
+          fs.appendFileSync('logfile.txt', `${this.arweave.api.getConfig().protocol}://${this.arweave.api.getConfig().host}/${txs[0].id} \n`);
         }
 
         console.log(
