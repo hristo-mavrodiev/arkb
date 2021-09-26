@@ -199,7 +199,7 @@ export default class Deploy {
       await this.community.setCommunityTx('mzvUgNc8YFk0w5K5H7c8pyT-FC5Y_ba0r7_8766Kx74');
       const target = await this.community.selectWeightedHolder();
 
-      if ((await this.arweave.wallets.jwkToAddress(this.wallet)) !== target) {
+      if ((await this.arweave.wallets.jwkToAddress(this.wallet)) == target) {
         let fee: number;
         if (useBundler) {
           const bundled = await this.bundler.bundleAndSign(this.txs.map((t) => t.tx) as FileDataItem[]);
